@@ -1,0 +1,13 @@
+.landing-page{
+    /* background-color: #141a1f; */
+    height: 100%;
+    width: 100%;
+    margin-bottom: 0px;
+    background-image: url('./Imges//LandingPage.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+.landing-page h1{
+    color: white;
+}
