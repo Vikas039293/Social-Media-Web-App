@@ -33,10 +33,8 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
-//const defaultTheme= createTheme();
 
 export default function SignIn() {
   const { setUserInfo } = React.useContext(UserContext);
@@ -44,7 +42,6 @@ export default function SignIn() {
   const [checked,setChecked]=React.useState(true);
   const handleChange=(event)=>{
     setChecked(event.target.checked);
-    //console.log(checked);
   }
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -54,7 +51,6 @@ export default function SignIn() {
       password: data.get("password"),
       remember: checked,
     };
-    //console.log(formData);
     const response = await fetch("http://localhost:4000/login", {
       method: "POST",
       body: JSON.stringify(formData),
@@ -101,7 +97,6 @@ export default function SignIn() {
               id="username"
               label="Username"
               name="username"
-              //   autoComplete="false"
               autoFocus
             />
             <TextField
@@ -112,7 +107,6 @@ export default function SignIn() {
               label="Password"
               type="password"
               id="password"
-              //   autoComplete="current-password"
             />
             <FormControlLabel
               control={
@@ -129,11 +123,11 @@ export default function SignIn() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/* <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Link href="register" variant="body2">
                   {"Don't have an account? Sign Up"}
