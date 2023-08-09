@@ -30,19 +30,7 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 
-// const defaultTheme = createTheme({
-//   typography: {
-//       // In Chinese and Japanese the characters are usually larger,
-//       // so a smaller fontsize may be appropriate.
-//       fontSize: 25,
-//       body2:{
-//           fontSize:15,
-//       }
-      
-//   },
-// });
 const defaultTheme = createTheme();
 export default function SignUp() {
   const navigate = useNavigate();
@@ -59,7 +47,7 @@ export default function SignUp() {
     if (formData.password !== formData.confirmPassword) {
       alert("confirm Password did't match");
     }
-    const response = await fetch("http://localhost:4000/register", {
+    const response = await fetch("https://social-web-83ud.onrender.com/register", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: { "Content-Type": "application/json" },
@@ -125,7 +113,6 @@ export default function SignUp() {
                   id="username"
                   label="Username"
                   name="username"
-                  // autoComplete="username"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -136,7 +123,6 @@ export default function SignUp() {
                   label="Password"
                   type="password"
                   id="password"
-                  // autoComplete="new-password"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -147,7 +133,6 @@ export default function SignUp() {
                   label="Confirm Password"
                   type="password"
                   id="confirmPassword"
-                  // autoComplete="new-password"
                 />
               </Grid>
             </Grid>

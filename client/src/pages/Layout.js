@@ -8,7 +8,7 @@ const Layout = () => {
   const navigate=useNavigate();
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://localhost:4000/protected", {
+      const response = await fetch("https://social-web-83ud.onrender.com/protected", {
         credentials: "include",
       });
       const user = await response.json();
@@ -19,10 +19,11 @@ const Layout = () => {
   function logout() {
     console.log("clicked");
     async function fetchData() {
-      const res = await fetch("http://localhost:4000/logout", {
+      const res = await fetch("https://social-web-83ud.onrender.com/logout", {
         credentials: "include",
         method: "POST",
       });
+      
     }
     fetchData();
     setUserInfo(null);

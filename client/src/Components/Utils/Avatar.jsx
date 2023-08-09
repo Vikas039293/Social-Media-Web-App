@@ -7,7 +7,7 @@ function Avatar(props){
   useEffect(()=>{
     async function fetchData(){
       try {
-        const res = await fetch("http://localhost:4000/avatar/" + props.username, {
+        const res = await fetch("https://social-web-83ud.onrender.com/avatar/" + props.username, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

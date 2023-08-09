@@ -28,4 +28,4 @@ function date(props) {
   )
 }
 
-export default date
+export default date;

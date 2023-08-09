@@ -14,7 +14,7 @@ function Home(){
         }
         const fetchData = async () => {
             try {
-                const req = await fetch("http://localhost:4000/posts",{
+                const req = await fetch("https://social-web-83ud.onrender.com/posts",{
                     method:'GET',
                     headers:{'Content-Type':'application/json'},
                     credentials:'include',
