@@ -17,7 +17,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const req = await fetch("http://localhost:4000/profile/" + user.id, {
+        const req = await fetch("https://social-web-83ud.onrender.com/profile/" + user.id, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
@@ -47,7 +47,7 @@ const Profile = () => {
     async function fetchData() {
       if (image) {
         setIsUpdated(false);
-        const response = await fetch("http://localhost:4000/uploadImg", {
+        const response = await fetch("https://social-web-83ud.onrender.com/uploadImg", {
           method: "POST",
           body: JSON.stringify({ image: image }),
           headers: { "Content-Type": "application/json" },
@@ -73,7 +73,7 @@ const Profile = () => {
         navigate("/login");
       return;
     } else {
-      const req = await fetch("http://localhost:4000/follow/" + user.id, {
+      const req = await fetch("https://social-web-83ud.onrender.com/follow/" + user.id, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

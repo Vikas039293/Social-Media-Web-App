@@ -17,7 +17,7 @@ const Avatar= require("./utils/Avatar");
 const Explore=require("./utils/explore");
 require("dotenv").config();
 const app= express();
-app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+app.use(cors({credentials:true,origin:'https://cool-bombolone-dea927.netlify.app/'}));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());

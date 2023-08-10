@@ -6,7 +6,7 @@ function explore() {
     const [users,setUsers]=useState([]);
     useEffect(()=>{
         async function fetchData(){
-            const req= await fetch("http://localhost:4000/explore",{
+            const req= await fetch("https://social-web-83ud.onrender.com/explore",{
                 method:'GET',
                 headers:{'Content-Type':'application/json'}
             })

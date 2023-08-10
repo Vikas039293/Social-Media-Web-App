@@ -5,7 +5,7 @@ const searchBar=({placehoder})=>{
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const req = await fetch("http://localhost:4000/search",{
+                const req = await fetch("https://social-web-83ud.onrender.com/search",{
                     method:'GET',
                     headers:{'Content-Type':'application/json'},
                     credentials:'include',
