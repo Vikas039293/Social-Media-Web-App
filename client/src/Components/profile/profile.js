@@ -20,6 +20,7 @@ const Profile = () => {
         const req = await fetch("http://localhost:4000/profile/" + user.id, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
+          credentials: "include",
         });
         if (req.ok) {
           const data = await req.json();

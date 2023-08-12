@@ -17,14 +17,12 @@ const Avatar= require("./utils/Avatar");
 const Explore=require("./utils/explore");
 require("dotenv").config();
 const app= express();
-app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+app.use(cors({credentials:true,origin:(origin,callback)=>{callback(null,origin)}}));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(passport.initialize());
-       
-
 
 
 app.post("/compose",Compose);
