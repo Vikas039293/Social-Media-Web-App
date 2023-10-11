@@ -11,7 +11,7 @@ cloudinary.config({
 
 const uploadImg=async (req,res)=>{
     try {
-        const token = req.cookies.token;
+        token=req.header('Authorization').split(' ')[1];
         const decoded = jwt.verify(token, secret);
         const base64Image=req.body.image;
         const image_id=decoded.username;
@@ -25,7 +25,6 @@ const uploadImg=async (req,res)=>{
       } catch (error) {
         console.error("Error occurred:", error);
         res.status(401).json("Error while Uploading");
-        //res.status(500).json("An error occurred while processing the request.");
       }
 }
 

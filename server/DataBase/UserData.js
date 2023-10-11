@@ -1,6 +1,18 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-mongoose.connect(process.env.MONGO_DB_URL, { useNewUrlParser: true });
+// async function success(){
+//   const succes =await mongoose.connect(process.env.MONGO_DB_URL, { useNewUrlParser: true });
+//   if(!succes){
+//     console.log(succes);
+//   }
+//   // console.log(succes);
+// }
+// success();
+const success = mongoose.connect(process.env.MONGO_DB_URL, { useNewUrlParser: true });
+// if(!success){
+//   console.log(success);
+// }
+// console.log(success);
 const postSchema = new mongoose.Schema(
   { 
     username:{type:String, required:true},

@@ -3,7 +3,8 @@ const jwt=require("jsonwebtoken");
 require("dotenv").config();
 const secret = process.env.JWT_SECRET;
 const home=async (req,res)=>{
-    const token = req.cookies.token;
+    const token = req.header('Authorization').split(' ')[1];
+    // console.log(token);
     const decoded=jwt.verify(token,secret);
     const usersArray= await Profile.find();
     const followerPosts = usersArray

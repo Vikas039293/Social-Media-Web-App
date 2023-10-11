@@ -14,6 +14,7 @@ export default function IconCheckboxes(props) {
   const [likes,setLikes]=React.useState(props.likes);
   const [checked, setChecked] = React.useState(userInfo.username?(props.likes.includes(userInfo.username)):false);
   const navigate = useNavigate();
+  const token=localStorage.getItem("token");
   const handleChange = (event) => {
     if(!userInfo.username){
       navigate("/login");
@@ -27,7 +28,10 @@ export default function IconCheckboxes(props) {
       const req= await fetch("https://social-web-83ud.onrender.com/like",{
       method:'POST',
       body: JSON.stringify({like:!checked,user:props.username,postId:props.id}),
-      headers: { "Content-Type": "application/json" },
+      headers:{
+        'Content-Type':'application/json',
+        Authorization:'Bearer '+token,
+      },
       credentials: "include",
     });
       const dataRecieved= await req.json();
