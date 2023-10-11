@@ -8,15 +8,21 @@ function Home(){
     const [Posts,setPosts]= useState([]);
     const {userInfo}=useContext(UserContext);
     const username=userInfo?userInfo.username:null;
+    const token=localStorage.getItem("token");
     useEffect(() => {
         if(!username){
             return;
         }
+        
         const fetchData = async () => {
             try {
-                const req = await fetch("http://localhost:4000/posts",{
+                // console.log(userInfo);
+                const req = await fetch("https://social-web-83ud.onrender.com/posts",{
                     method:'GET',
-                    headers:{'Content-Type':'application/json'},
+                    headers:{
+                        'Content-Type':'application/json',
+                        Authorization:'Bearer '+token,
+                    },
                     credentials:'include',
                 });
                 
@@ -33,6 +39,7 @@ function Home(){
         fetchData();
         
     },[userInfo]);
+    console.log(token);
     const logged = userInfo?userInfo.username? true : false:false;
     return (
         <div>

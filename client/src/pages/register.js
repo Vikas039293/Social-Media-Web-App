@@ -59,7 +59,7 @@ export default function SignUp() {
     if (formData.password !== formData.confirmPassword) {
       alert("confirm Password did't match");
     }
-    const response = await fetch("http://localhost:4000/register", {
+    const response = await fetch("https://social-web-83ud.onrender.com/register", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: { "Content-Type": "application/json" },

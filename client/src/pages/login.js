@@ -38,6 +38,7 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const { setUserInfo } = React.useContext(UserContext);
+  const {token,setToken}= React.useContext(UserContext);
   const navigate = useNavigate();
   const [checked,setChecked]=React.useState(true);
   const handleChange=(event)=>{
@@ -51,7 +52,7 @@ export default function SignIn() {
       password: data.get("password"),
       remember: checked,
     };
-    const response = await fetch("http://localhost:4000/login", {
+    const response = await fetch("https://social-web-83ud.onrender.com/login", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: { "Content-Type": "application/json" },
@@ -60,6 +61,7 @@ export default function SignIn() {
     if (response.ok) {
       const Info = await response.json();
       setUserInfo(Info);
+      localStorage.setItem("token",Info.token);
       navigate("/");
     } else {
       alert("Wrong Crendentials");

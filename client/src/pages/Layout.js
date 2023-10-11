@@ -5,27 +5,36 @@ import SearchBar from "../Components/SearchBar/searchBar";
 import Avatar from "../Components/Utils/Avatar";
 const Layout = () => {
   const { setUserInfo, userInfo } = useContext(UserContext);
+  const token=localStorage.getItem("token");
   const navigate=useNavigate();
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://localhost:4000/protected", {
-        credentials: "include",
+      const response = await fetch("https://social-web-83ud.onrender.com/protected", {
+        headers:{
+          'Content-Type':'application/json',
+          Authorization:'Bearer '+token,
+        },
       });
       const user = await response.json();
       setUserInfo(user);
     }
-    fetchData();
+    if(token){
+      fetchData();
+    }
+    // fetchData();
   }, []);
   function logout() {
-    console.log("clicked");
     async function fetchData() {
-      const res = await fetch("http://localhost:4000/logout", {
+      const res = await fetch("https://social-web-83ud.onrender.com/logout", {
         credentials: "include",
         method: "POST",
       });
     }
     fetchData();
+    const x=localStorage.removeItem("token");
+    // console.log(localStorage.getItem("token"));
     setUserInfo(null);
+    navigate("/");
   }
   const username = userInfo ? userInfo.username : null;
   return (

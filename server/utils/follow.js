@@ -5,7 +5,7 @@ const secret = process.env.JWT_SECRET;
 const follow = async (req, res) => {
   try {
     const user = req.params.title;
-    const token = req.cookies.token;
+    token=req.header('Authorization').split(' ')[1];
     const decoded = jwt.verify(token, secret);
 
     const userDoc = await Profile.findOne({ username: user });

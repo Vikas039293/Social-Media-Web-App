@@ -10,6 +10,7 @@ function About(){
     const navigate=useNavigate();
     const [preViewFile,setPreViewFile]=useState('');
     const [fileType,setFileType]=useState('');
+    const token=localStorage.getItem("token");
     async function PostFile(ev){
         ev.preventDefault();
         const data={
@@ -18,10 +19,13 @@ function About(){
             file:file,
             fileType:fileType.startsWith('image/')?"image":"video",
         };
-        const response = await fetch("http://localhost:4000/compose",{
+        const response = await fetch("https://social-web-83ud.onrender.com/compose",{
             method:'POST',
             body: JSON.stringify({data}),
-            headers:{'Content-Type':'application/json'}
+            headers:{
+                'Content-Type':'application/json',
+                Authorization:'Bearer '+token,
+            },
         });
         if(!response.ok){
             console.log(response);
