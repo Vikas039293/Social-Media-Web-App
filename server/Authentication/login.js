@@ -9,11 +9,9 @@ const login = (req, res, next) => {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
         const token = jwt.sign({ userId: user.id,username:user.username }, secret,{expiresIn:remember?'2 days':'2h'});
-<<<<<<< HEAD
-        res.cookie('token',token ,{path:'/cool-bombolone-dea927.netlify.app'}).json({username:user.username,userId:user.id});
-=======
+
         res.json({token:token,username:user.username,userId:user.id});
->>>>>>> m2
+
         // ,{httpOnly:true,maxAge: remember?(60*60*2):(60*60*24*2)}
     })(req, res, next);
 };
