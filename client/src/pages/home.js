@@ -16,10 +16,7 @@ function Home(){
         
         const fetchData = async () => {
             try {
-<<<<<<< HEAD
-=======
                 // console.log(userInfo);
->>>>>>> local
                 const req = await fetch("https://social-web-83ud.onrender.com/posts",{
                     method:'GET',
                     headers:{

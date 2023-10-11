@@ -10,14 +10,11 @@ const Layout = () => {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("https://social-web-83ud.onrender.com/protected", {
-<<<<<<< HEAD
-        credentials: "include",
-=======
+
         headers:{
           'Content-Type':'application/json',
           Authorization:'Bearer '+token,
         },
->>>>>>> local
       });
       const user = await response.json();
       setUserInfo(user);
