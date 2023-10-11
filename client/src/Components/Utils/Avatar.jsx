@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Avatar(props){
+  const token=localStorage.getItem("token");
   const navigate=useNavigate();
   const [imgUrl,setImgUrl]=useState("https://www.pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png");
   useEffect(()=>{
@@ -9,7 +10,10 @@ function Avatar(props){
       try {
         const res = await fetch("https://social-web-83ud.onrender.com/avatar/" + props.username, {
         method: "GET",
-        headers: { "Content-Type": "application/json" },
+        headers:{
+          'Content-Type':'application/json',
+          Authorization:'Bearer '+token,
+        },
         credentials: "include",
       });
       const data= await res.json();

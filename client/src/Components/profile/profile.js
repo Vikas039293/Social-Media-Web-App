@@ -14,12 +14,19 @@ const Profile = () => {
   const [isUpdated,setIsUpdated]=useState(false);
   const [image, setImage] = useState("");
   const navigate = useNavigate();
+  const token=localStorage.getItem("token");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const req = await fetch("https://social-web-83ud.onrender.com/profile/" + user.id, {
           method: "GET",
-          headers: { "Content-Type": "application/json" },
+          headers:{
+            'Content-Type':'application/json',
+            Authorization:'Bearer '+token,
+          },
+          
+          credentials: "include",
         });
         if (req.ok) {
           const data = await req.json();
@@ -50,7 +57,10 @@ const Profile = () => {
         const response = await fetch("https://social-web-83ud.onrender.com/uploadImg", {
           method: "POST",
           body: JSON.stringify({ image: image }),
-          headers: { "Content-Type": "application/json" },
+          headers:{
+            'Content-Type':'application/json',
+            Authorization:'Bearer '+token,
+          },
           credentials: "include",
         });
         setIsUpdated(true);
@@ -75,7 +85,10 @@ const Profile = () => {
     } else {
       const req = await fetch("https://social-web-83ud.onrender.com/follow/" + user.id, {
         method: "GET",
-        headers: { "Content-Type": "application/json" },
+        headers:{
+          'Content-Type':'application/json',
+          Authorization:'Bearer '+token,
+        },
         credentials: "include",
       });
       //console.log(req.status);
